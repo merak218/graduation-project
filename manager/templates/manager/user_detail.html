@@ -1,0 +1,35 @@
+{% extends "manager/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div id="button" >
+    <mu-button color="teal900" href="{% url 'manager:user-list' %}">
+        <mu-icon value="arrow_back" left></mu-icon>返回
+    </mu-button>
+    <article class="media content-section form">
+        <div class="media-body">
+            <img class="rounded-circle article-img" src="{{ object.profile.image.url }}">
+            <p class="article-content">
+                帳號：{{ object.username }}
+                使用者名稱：{{ object.first_name }}
+                E-mail：{{ object.email }}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy }}
+                    </fieldset>
+                    {% comment %} <div class="form-group">
+                        <button class="btn btn-info" type="submit">update</button>
+                    </div> {% endcomment %}
+                    <div style="margin-left: 40%;">
+                        <mu-button type="submit" color="blue300" >
+                            <mu-icon value="create" left></mu-icon>修改
+                        </mu-button>
+                    </div>
+                </form>
+            </p>
+        </div>
+    </article>
+</div>
+{% endblock content %}
+
+

@@ -1,0 +1,40 @@
+{% extends "manager/base.html" %}
+{% block content %}
+    <div class="form">
+        <div>
+            <h1 class="mb-3">
+                {% for post in posts|slice:":1" %}
+                    {{ post.author }}
+                {% endfor %}
+                ({{ page_obj.paginator.count }})
+            </h1>
+        </div>
+        <div id="button" >
+            <mu-button color="teal900" href="{% url 'manager:user-list' %}">
+                <mu-icon value="arrow_back" left></mu-icon>返回
+            </mu-button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">活動名稱</th>
+                    <th scope="col">版型</th>
+                    <th scope="col">金額</th>
+                    <th scope="col">上架日期</th>
+                </tr>
+            </thead>
+            {% for post in posts %}
+                <tr>
+                <th>{{ forloop.counter }}</th>
+                <td><a href="{% url 'manager:post-detail' post.id %}">{{ post.title }}</a></td>
+                <td>{{ post.edition }}</td>
+                <td>{{ post.edition.charge }}</td>
+                <td>{{ post.date_post|date:"n/j , Y" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}
+
+

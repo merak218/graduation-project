@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    home
+{% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <a class="btn btn-danger" href="{% url 'manager:manager-home' %}">manager</a>
+        {% endif %}
+        <a class="btn btn-dark" href="{% url 'account:user-home' %}">user</a>
+    {% else %}
+        <a type="button" class="btn btn-info" href="#">申請帳號</a>
+    {% endif %}
+{% endblock content %}
+
+

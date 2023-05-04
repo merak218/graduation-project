@@ -1,0 +1,25 @@
+{% extends "manager/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="form" id="button">
+    <mu-button color="teal900" href="{% url 'manager:edit-list' %}">
+        <mu-icon value="arrow_back" left></mu-icon>返回
+    </mu-button></br></br>
+    版型名稱：{{ object.edit_name }} </br>
+    價格：{{ object.charge }}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+
+            <div style="margin-left: 40%;">
+                <mu-button type="submit" color="blue300" >
+                    <mu-icon value="create" left></mu-icon>修改
+                </mu-button>
+            </div>
+        </form>
+</div>
+{% endblock content %}
+
+

@@ -1,0 +1,101 @@
+{% extends "account/base.html" %}
+{% block content %}
+    <div>
+            {% if user.is_authenticated %}
+                <h1>{{ user.first_name }}'s Home !</h1>
+                <div style="background-color: #ff914d;" class="alert alert-dismissible fade show" role="alert">
+                    hello ,<strong>{{ user.username}}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div>
+                    {% for post in posts %}
+                        <article class="media content-section">
+                            <span class="article_imgbgset"> 
+                                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+                            </span>
+                            <span class="media-body article_metadatabgset">
+                                <div class="article-metadata">
+                                    <small>{{ post.author.username }}</small>
+                                    {% comment %} <a class="mr-2" href="{% url 'account:user-posts' post.author.username %}">{{ post.author.username }}</a> {% endcomment %}
+                                    <small class="text-muted">{{ post.date_post|date:"F d, Y" }}</small>
+                                </div>
+                                <h2>
+                                    <a class="article-title" href="{% url 'account:post-detail' post.id %}">{{ post.title }}</a>
+                                </h2>
+                                <div style="width:350px;">
+                                    <p class="article-content ellipsis">{{ post.content }}</p>
+                                </div>
+                            </span>
+                        </article>
+                        </br>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <center>
+                <div class="mar_set_m5" style="background-color: #41B883;">
+                    <p style="color:#ffffff;font-family:sans-serif;;">歡迎您使用本系統!!!</p>
+                </div>
+                </br>
+                <center>
+                    <div class="alert alert-dismissible fade show" role="alert">
+                        <img src="https://upload.cc/i1/2020/06/03/pRqD6I.jpg" style="width:100%;" />
+                    </div>
+                </center>
+                </br>
+                <div  style="width:500;border-width:4px;border-style:double;border-color:#ebe6a3;padding:5px;">
+                    <h3 style="color:white;background-color:#41B883;font-family:sans-serif;">About Us</h3>
+                    <article class="media content-section" style="width:450px">
+                        <span class="article_imgbgset"> 
+                            <img class="rounded-circle article-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Assassination_Classroom_-_Koro-sensei_smiling_head.svg/200px-Assassination_Classroom_-_Koro-sensei_smiling_head.svg.png">
+                        </span>
+                        <span class="media-body article_metadatabgset" style="background-color:#CBDDB7;">
+                            <h4 class="article-title" style="margin-top:12px;text-align:left;">指導老師 — <b style="font-size:18px;text-align:center;">李仕雄</b></h4>
+                            <p class="article-content" style="text-align:left;">提供技術指導
+                                shlee@nkust.edu.tw</p>
+                        </span>
+                    </br>
+                    </article>
+                    </br>
+                    <article class="media content-section" style="width:450px">
+                        <span class="article_imgbgset"> 
+                            <img class="rounded-circle article-img" src="https://teameowdev.files.wordpress.com/2016/04/teameow-e9a090e8a8ade9a0ade8b2bc.jpg?w=809">
+                        </span>
+                        <span class="media-body article_metadatabgset" style="background-color:#CBDDB7;">
+                            <h4 class="article-title" style="margin-top:12px;text-align:left;">開發人員 — <b style="font-size:18px;text-align:center;">不幸的黃瓜</b></h4>
+                            <p class="article-content" style="text-align:left;">開發系統功能
+                                聯絡方式：1106137203@nkust.edu.tw</p>
+                        </span>
+                    </br>
+                    </article>
+                    </br>
+                    <article class="media content-section" style="width:450px">
+                        <span class="article_imgbgset"> 
+                            <img class="rounded-circle article-img" src="https://i1.wp.com/pic1.zhimg.com/50/v2-7511b59b7cd73ee8a6c47a8eacd41742_hd.jpg">
+                        </span>
+                        <span class="media-body article_metadatabgset" style="background-color:#CBDDB7;">
+                            <h4 class="article-title" style="margin-top:12px;text-align:left;">開發人員 — <b style="font-size:18px;text-align:center;">江宜軒</b></h4>
+                            <p class="article-content" style="text-align:left;">設計系統畫面
+                                聯絡方式：1106137204@nkust.edu.tw</p>
+                        </span>
+                    </br>
+                    </article> 
+                    </br>
+                    <article class="media content-section" style="width:450px">
+                        <span class="article_imgbgset"> 
+                            <img class="rounded-circle article-img" src="https://upload.cc/i1/2020/06/02/IdmtPF.jpg">
+                        </span>
+                        <span class="media-body article_metadatabgset" style="background-color:#CBDDB7;">
+                            <h4 class="article-title" style="margin-top:12px;text-align:left;">開發人員 — <b style="font-size:18px;text-align:center;">郭芷芸</b></h4>
+                            <p class="article-content" style="text-align:left;">串流直播設定
+                            聯絡方式：1106137224@nkust.edu.tw</p>
+                        </span>
+                    </br>
+                    </article>
+                </div>
+                </center>
+        {% endif %}
+{% endblock content %}
+
+

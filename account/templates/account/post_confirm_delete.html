@@ -1,0 +1,13 @@
+{% extends "manager/base.html" %}
+{% block content %}
+<div id="button">
+    <form method="post">
+        {% csrf_token %} 
+        <p>是否要將 "{{ object }}"刪除?</p> 
+        <mu-button color="red" type="submit" value="Confirm">
+            <mu-icon value="delete" left></mu-icon>刪除
+        </mu-button>
+    </form> 
+</div>
+
+{% endblock content %}

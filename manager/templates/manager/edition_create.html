@@ -1,0 +1,26 @@
+{% extends "manager/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="form" id="button" >
+    <mu-button color="teal900" href="{% url 'manager:edit-list' %}">
+         <mu-icon value="arrow_back" left></mu-icon>返回
+    </mu-button> 
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Create Edition</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                    <div style="margin-left: 40%;">
+                        <mu-button type="submit" color="blue300">
+                            <mu-icon value="create" left></mu-icon>新增
+                        </mu-button>
+                    </div>
+                {% comment %} <button class="btn btn-outline-info" type="submit">create</button> {% endcomment %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

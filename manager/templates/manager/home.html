@@ -1,0 +1,33 @@
+
+
+{% extends "manager/base.html" %}
+
+{% block content %}
+<div class="form">
+    <h2>付款情形</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">使用者</th>
+                <th scope="col">標題</th>
+                <th scope="col">上傳日期</th>
+                <th scope="col">付款情形</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pay in pays %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ pay.act_name.author.first_name }} ({{ pay.act_name.author }})</td>
+                    <td><a href="{% url 'manager:postpay-detail' pay.id %}">{{ pay.act_name }}</a></td>
+                    <td>{{ pay.act_name.date_post|date:"n-j , Y" }}</td>
+                    <td>{% if pay.paid %}是{% else %}否{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+

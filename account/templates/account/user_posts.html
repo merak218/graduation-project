@@ -1,0 +1,31 @@
+{% extends "account/base.html" %}
+{% block content %}
+    <div class="form">
+        <div>
+            <h1 class="mb-3">歷史資料 ({{ page_obj.paginator.count }})</h1>
+
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">活動名稱</th>
+                    <th scope="col">版型</th>
+                    <th scope="col">金額</th>
+                    <th scope="col">上架日期</th>
+                </tr>
+            </thead>
+            {% for post in posts %}
+                <tr>
+                <th>{{ forloop.counter }}</th>
+                <td><a href="{% url 'account:post-detail' post.id %}">{{ post.title }}</a></td>
+                <td>{{ post.edition }}</td>
+                <td>{{ post.edition.charge }}</td>
+                <td>{{ post.date_post|date:"n/j/Y" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}
+
+

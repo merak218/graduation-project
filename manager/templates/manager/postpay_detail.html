@@ -1,0 +1,44 @@
+{% extends "manager/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div id="button">
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="post_detail">
+                <br />
+                <mu-button color="teal900" href="{% url 'manager:post-list' %}">
+                    <mu-icon value="arrow_back" left></mu-icon>返回
+                </mu-button>
+                <mu-button color="red" href="{% url 'manager:postpay-delete' object.id %}">
+                    <mu-icon value="delete" left></mu-icon>刪除
+                </mu-button>
+                <br /><br />
+                <h2>付款明細</h2>
+                活動名稱：{{ object.act_name }} <br />
+                版型：{{ object.edition }} <br />
+                價格：{{ object.edition.charge }} <br />
+                是否繳費：{% if object.paid %}是
+                {% else %}
+                    否
+                    <div>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                {{ form|crispy }}
+                            </fieldset>
+                            <div class="form-group" style="margin-left: 40%;">
+                                <mu-button type="submit" color="blue300" >
+                                    <mu-icon value="create" left></mu-icon>修改
+                                </mu-button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+                <br>
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock content %}
+
+

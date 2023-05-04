@@ -1,0 +1,89 @@
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div id="post_form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="form">
+            <div class="form_top_word">
+              上傳區
+            </div>
+            <mu-container>
+
+              <mu-form :model="post_form" method="POST" enctype="multipart/form-data" class="mu-demo-form" :label-position="labelPosition" label-width="100">
+                {% csrf_token %}
+                <mu-form-item prop="input" label="活動名稱">
+                  {{ form.title }}
+                </mu-form-item>
+
+                <mu-form-item prop="date" label="上架日期">
+                  {{ form.date_post }}
+                </mu-form-item>
+
+                <mu-form-item  prop="select" label="版型">
+                    {{ form.edition }}
+                </mu-form-item>
+                <mu-form-item id="video_url_HS" prop="input" label="影片網址">
+                  {{ form.video_url }}
+                </mu-form-item>
+
+                <mu-form-item id="mar_text_HS" prop="input" label="跑馬燈文字">
+                  {{ form.mar_text }}
+                </mu-form-item>
+
+                <mu-form-item id="image_HS" prop="input" label="圖片">
+                  {{ form.image }}
+                </mu-form-item>
+
+                <mu-form-item id="content_HS" prop="textarea" label="投放文字">
+                  {{ form.content }}
+                </mu-form-item>
+
+                <mu-form-item id="qrcode_HS"  prop="input" label="QRcode">
+                  {{ form.qrcode }}
+                </mu-form-item>
+                <mu-button type="submit" color="red" style="margin-left: 50%;">
+                  Send<mu-icon right value="send"></mu-icon>
+                </mu-button>
+              </mu-form>
+            </mu-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
+<br /> 
+
+
+<script>
+
+    let urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams.get('value')); // "abc"
+    value = urlParams.get('value')
+    if (value == 3 || value == 6) {
+        $("#image_HS").hide();
+    }
+
+    if (value == 1 || value == 3 || value == 2 || value == 6) {
+        $("#content_HS").hide();
+    }
+
+    if (value == 1 || value == 4 || value == 6) {
+        $("#mar_text_HS").hide();
+    }
+
+    if (value == 1 || value == 2 || value == 6) {
+        $("#video_url_HS").hide();
+    }
+
+    if (value == 1 || value == 2  || value == 4 || value == 6) {
+        $("#qrcode_HS").hide();
+    }
+</script>
+
+{% endblock content %}

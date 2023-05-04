@@ -1,0 +1,68 @@
+{% extends "account/base.html" %}
+{% block content %}
+<div class="form">
+    <h2>付款情形</h2>
+    <div id="button" >
+        <mu-button color="teal900" href="{% url 'account:user-home' %}">
+            <mu-icon value="arrow_back" left></mu-icon>返回
+        </mu-button>
+    </div>
+    <table class="table">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">使用者</th>
+            <th scope="col">活動名稱</th>
+            <th scope="col">版型</th>
+            <th scope="col">價錢</th>
+            <th scope="col">付款情形</th>
+        </tr>
+        {% for pay in pays %}
+            <tr>
+            {% if request.user == pay.act_name.author %}
+                {% comment %} <th>{{ pay.id }}</th> {% endcomment %}
+                <th>{{ forloop.counter }}</th>
+                <td>{{ pay.act_name.author }}</td>
+                <td>{{ pay.act_name }}</td>
+                <td>{{ pay.act_name.edition }}</td>
+                <td>{{ pay.act_name.edition.charge }}</td>
+                <td>{% if pay.paid %}是{% else %}否{% endif %}</td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}
+
+
+{% comment %} {% extends "manager/base.html" %}
+{% block content %}
+<div class="form">
+    <h2>版型列表</h2>
+    <table class="table">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">版型</th>
+            <th scope="col">價格</th>
+        </tr>
+        {% for edit in editions %}
+            <tr>
+                <th>{{ edit.id }}</th>
+                <td><a href="{% url 'manager:edit-update' edit.id %}">{{ edit.edit_name }}</a></td>
+                <td>{{ edit.charge }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div id="button" style="margin-left: 40%;">
+        <mu-button color="teal900" href="{% url 'manager:manager-home' %}">
+            <mu-icon value="arrow_back" left></mu-icon>返回
+        </mu-button>
+        <mu-button color="blue300" href="{% url 'manager:edit-create' %}">
+            <mu-icon value="create" left></mu-icon>新增
+        </mu-button>
+    </div>
+</div>
+
+{% endblock content %} {% endcomment %}
+
+

@@ -1,0 +1,22 @@
+{% extends "account/base.html" %}
+{% block content %}
+    <div>
+        <a href="{% url 'account:user-payments' %}" class="btn btn-outline-dark btn-sm">Back</a>
+    </div>
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ object.act_name.author }}</a>
+                <small class="text-muted">{{ object.act_name.date_post|date:"F d, Y" }}</small>
+            </div>
+            <h2>{{ object.act_name }}</h2> 
+            <p class="article-content">
+                版型 = {{ object.edition }} 
+                價錢 = {{ object.edition.charge }}
+                是否已付清款項 = {{ object.paid }}
+            </p>
+        </div>
+    </article>
+{% endblock content %}
+
+

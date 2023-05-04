@@ -1,0 +1,38 @@
+{% extends "manager/base.html" %}
+
+{% block content %}
+<div class="form">
+    <h2>未付款列表</h2>
+
+    <div id="button" >
+        <mu-button color="teal900" href="{% url 'manager:manager-home' %}">
+            <mu-icon value="arrow_back" left></mu-icon>返回
+        </mu-button>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col"></th>
+            <th scope="col">使用者</th>
+            <th scope="col">活動名稱</th>
+            <th scope="col">付款情況</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pay in pays %}
+                {% if not pay.paid %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ pay.act_name.author.first_name }} ({{ pay.act_name.author }})</td>
+                        <td><a href="{% url 'manager:postpay-detail' pay.id %}">{{ pay.act_name }}</a></td>
+                        <td>{% if pay.paid %}是{% else %}否{% endif %}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+

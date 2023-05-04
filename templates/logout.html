@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    登出
+{% endblock title %}
+{% block content %}
+<div class="form">
+    <h2>您已經登出了</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a class="ml-2" href="{% url 'login' %}">再次登入</a>
+        </small>
+    </div>
+</div>
+{% endblock content %}

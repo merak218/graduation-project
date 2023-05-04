@@ -1,0 +1,32 @@
+
+{% extends "account/base.html" %}
+{% comment %} update user profile {% endcomment %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <div class="profile_imgbgset">
+                <image class="article-img rounded-circle account-img" style="margin-top: 10px;" src="{{ user.profile.image.url }}" width="180" height="180">
+            </div>
+            <div class="media-body profile_metadatabgset">
+                <h2 class="account-heading">{{ user.username }}</h2> 
+                <h3>hello , {{ user.first_name }}</h3>
+                <p class="text-secondary">{{ user.email }}</p>
+                {% if user.is_superuser %}
+                    <mu-button id="button" href="{% url 'manager:manager-home' %}" color="red">
+                        manager
+                    </mu-button>
+                {% endif %}
+            </div>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form form-group">
+                <legend class=" mb-4">個人資料</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+                <button class="btn" style="background-color: #41b883; margin-left: 45%;" type="submit">更改</button>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

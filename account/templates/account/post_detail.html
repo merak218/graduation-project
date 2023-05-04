@@ -1,0 +1,120 @@
+
+
+{% extends "account/base.html" %}
+{% block content %}
+
+    <div id="button">
+        <mu-button color="teal900" href="{% url 'account:user-posts' user.username %}">
+            <mu-icon value="arrow_back" left></mu-icon>返回
+        </mu-button>
+    </div>
+    <article class="media content-section form">
+        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'account:user-posts' post.author.username %}">{{ post.author.username }}</a>
+                <small class="text-muted">{{ object.date_post|date:"F d, Y" }}</small>
+            </div>
+            <div class="post_detail"  style="max-height:850px;max-width:800px;">
+                <h2>{{ object.title }}</h2> 
+                    <div class="iframe-body-sty">           
+                        {% if post.edition.id == 1 %}
+                            <div id="iframe-shrink_post_detail">
+                                {% if post.image %}
+                                    <img class="img_set_m1" src="{{ post.image.url }}"> 
+                                {% endif %}
+                            </div>
+                        {% elif post.edition.id == 2 %}
+                            <div id="iframe-shrink_post_detail">
+                                <div class="mar_set_m2">
+                                    <p>{{ post.mar_text }} </p>
+                                </div>
+                                {% if post.image %}
+                                    <div class="img_set_m2">
+                                        <img class="img_set_m2"  src="{{ post.image.url }}" />
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% elif post.edition.id == 3 %}
+                            <div id="iframe-shrink_post_detail">
+                                <div class="push_top_m3"></div>
+                                <div class="mar_set_m3">
+                                    <p>{{ post.mar_text }}</p>
+                                </div>
+                                {% if post.video_url %}
+                                    <div class="video_set_m3">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe  src="https://www.youtube.com/embed/{{ post.video_url }}?version=3&loop=1&playlist={{ post.video_url }}&autoplay=1&mute=1"></iframe>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if post.qrcode %}
+                                    <div class="qrcode_set_m3">
+                                        <img class="img-fluid" width="720px" src="{{ post.qrcode.url }}" />
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% elif post.edition.id == 4 %}
+                            <div id="iframe-shrink_post_detail">
+                                <div class="word_set_m4">
+                                    {{ post.content }} 
+                                </div>                     
+                                {% if post.video_url %}
+                                    <div class="video_position_set_m4">
+                                        <div class="video_set_m4">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe  src="https://www.youtube.com/embed/{{ post.video_url }}?version=3&loop=1&playlist={{ post.video_url }}&autoplay=1&mute=1"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if post.image %}
+                                    <div class="img_set_m4">
+                                        <img class="img_set_m4" src="{{ post.image.url }}" />
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% elif post.edition.id == 5 %}
+                            <div id="iframe-shrink_post_detail">
+                                <div class="row">
+                                    <div class="word_set_m5">
+                                        {{ post.content }} 
+                                    </div>
+                                    {% if post.qrcode %}
+                                        <div class="qrcode_set_m5">
+                                            <img   src="{{ post.qrcode.url }}" />
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                {% if post.video_url %}
+                                    <div class="video_position_set_m5">
+                                        <div class="video_set_m5">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe  src="https://www.youtube.com/embed/{{ post.video_url }}?version=3&loop=1&playlist={{ post.video_url }}&autoplay=1&mute=1"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="mar_set_m5">
+                                    <p>{{ post.mar_text }}</p>
+                                </div> 
+                                {% if post.image %}
+                                    <div class="img_set_m5">
+                                        <img class="img_set_m5" src="{{ post.image.url }}" />
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% elif post.edition.id == 6 %}
+                            <div id="iframe-shrink_post_detail">
+
+                                <iframe  src="https://www.youtube.com/embed/{{ post.video_url }}?version=3&loop=1&playlist={{ post.video_url }}&autoplay=1&mute=1"></iframe>
+                           
+                            </div>
+                        {% endif %}
+                    </div>
+            </div>
+        </div>
+    </article>
+{% endblock content %}
+
+

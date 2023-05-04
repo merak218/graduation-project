@@ -1,0 +1,114 @@
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% if title %}
+        <title>{{ user.username }}-{{ title }}</title>
+    {% else %}
+        <title>Manager Home</title>
+    {% endif %}
+    <!-- VUE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js"></script>
+    
+    <!-- MUSE-UI CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/muse-ui/dist/muse-ui.css">
+    <script src="https://unpkg.com/muse-ui/dist/muse-ui.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/main.css' %}">
+  </head>
+  <body style="background-color: #678F8D">
+  
+    <header>
+      <nav style="background-color: #285059" class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'manager:manager-home' %}">ManagerHome</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+            </div>
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'manager:edit-list' %}">版型</a>
+                <a class="nav-item nav-link" href="{% url 'manager:notpay-list' %}">未付款</a>
+                <a class="nav-item nav-link" href="{% url 'manager:post-list' %}">Post</a>
+                <a class="nav-item nav-link" href="{% url 'manager:user-list' %}">使用者</a>
+                <a class="nav-item nav-link" href="{% url 'manager:custom-list' %}">客製化</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">登出</a>
+                {% if request.user.is_superuser  %}
+                  <a class="nav-item nav-link" href="{% url 'register' %}">註冊</a>
+                {% endif %}
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">登入</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="push_top"></div>
+    <main role="main" class="container">
+      <div class="container">
+        <div>
+          {% if messages %}
+            {% for messages in messages %}
+              <div class="alert alert-{{ messages.tags }}">
+                {{ messages }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            {% block content %}
+            {% endblock content%}
+          </div>
+        </div>
+      </div>
+      <br>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if is_paginated %}
+            {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page=1">First</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              </li>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                  </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                  </li>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number}}">Next</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+              </li>
+            {% endif %}
+          {% endif %}
+        </ul>
+      </nav>
+    </main>
+    <script>
+      new Vue().$mount('#button')
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

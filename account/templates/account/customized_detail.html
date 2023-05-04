@@ -1,0 +1,20 @@
+{% extends "account/base.html" %}
+{% block content %}
+    <div>
+        <a href="{% url 'account:user-home' %}" class="btn btn btn-dark btn-sm mt-1 mb-1">Back</a>
+    </div>
+    <article class="media content-section form">
+        <div class="media-body">
+            <div class="customized_detail">
+                <h2>{{ object.contact }}</h2> 
+                <p class="article-content">
+                    field = {{ object.field }} 
+                    date = {{ object.date }} 
+                    note = {{ object.note }} 
+                </p>
+            </div>
+        </div>
+    </article>
+{% endblock content %}
+
+

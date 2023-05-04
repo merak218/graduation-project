@@ -1,0 +1,274 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-12">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#P1">
+                <img src="https://upload.cc/i1/2020/05/28/GT72mp.png" class="img-adjust">
+                </button>
+                <div class="modal fade bd-example-modal-lg" id="P1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title hword-adjust" id="exampleModalCenterTitle">版型(一)</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <img src="https://upload.cc/i1/2020/05/28/GT72mp.png" class="img-adjust">
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <h1 class="hword-adjust">版型(一)</h1>
+                                            <p class="pword-adjust">
+                                                <br>
+                                                需上傳檔案：圖片<br><br>
+                                                檔案規格：<br>
+                                                圖片：寬度為1085、高度不超過1835、<br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'account:post-create' %}?value=1">
+                                    <button type="submit" value="pick_p1" name="pick_p1" class="btn btn-outline-warning">
+                                        選擇版型(一)並前往下一步
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#P2">
+                    <img src="https://upload.cc/i1/2020/05/28/Fm6kOq.png" class="img-adjust">
+                </button>
+                <div class="modal fade bd-example-modal-lg" id="P2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title hword-adjust" id="exampleModalCenterTitle">版型(二)</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <img src="https://upload.cc/i1/2020/05/28/Fm6kOq.png" class="img-adjust">
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <h1 class="hword-adjust">版型(二)</h1>
+                                            <p class="pword-adjust">
+                                                <br>
+                                                需上傳檔案：圖片、文字<br><br>
+                                                檔案規格：<br>
+                                                圖片：寬度為1085、高度不超過1780、<br>
+                                                跑馬燈：字數需在50字內、<br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'account:post-create' %}?value=2">
+                                    <button type="submit" value="pick_p2" name="pick_p2" class="btn btn-outline-warning">
+                                        選擇版型(二)並前往下一步
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#P3">
+                    <img src="https://upload.cc/i1/2020/05/28/76nmQr.png" class="img-adjust">
+                </button>
+                <div class="modal fade bd-example-modal-lg" id="P3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title hword-adjust" id="exampleModalCenterTitle" >版型(三)</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <img src="https://upload.cc/i1/2020/05/28/76nmQr.png" class="img-adjust">
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <h1 class="hword-adjust">版型(三)</h1>
+                                            <p class="pword-adjust">
+                                                <br>
+                                                需上傳檔案：跑馬燈、影片、QRcode圖片<br><br>
+                                                檔案規格：<br>
+                                                影片：請附上youtube影片"ID"，影片時長需在10分鐘內、<br>
+                                                跑馬燈：字數需在50字內、<br>
+                                                QRcode：須為正方形之圖片
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'account:post-create' %}?value=3">
+                                    <button type="submit" value="pick_p3" name="pick_p3" class="btn btn-outline-warning">
+                                        選擇版型(三)並前往下一步
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#P4">
+                    <img src="https://upload.cc/i1/2020/05/28/SaTsRg.png" class="img-adjust">
+                </button>
+                <div class="modal fade bd-example-modal-lg" id="P4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title hword-adjust" id="exampleModalCenterTitle">版型(四)</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <img src="https://upload.cc/i1/2020/05/28/SaTsRg.png" class="img-adjust">
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <h1 class="hword-adjust">版型(四)</h1>
+                                            <p class="pword-adjust">
+                                                <br>
+                                                需上傳檔案：影片、圖片、文字、跑馬燈<br><br>
+                                                檔案規格：<br>
+                                                影片：請附上youtube影片"ID"，影片時長需在10分鐘內、<br>
+                                                圖片：寬度為1085、高度不超過990、<br>
+                                                文字：字數需在80字內（含標點符號)、<br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'account:post-create' %}?value=4">
+                                    <button type="submit" value="pick_p4" name="pick_p4" class="btn btn-outline-warning">
+                                        選擇版型(四)並前往下一步
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#P5">
+                    <img src="https://upload.cc/i1/2020/05/28/iWL3RJ.png" class="img-adjust">
+                </button>
+                <div class="modal fade bd-example-modal-lg" id="P5" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title hword-adjust" id="exampleModalCenterTitle">版型(五)</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <img src="https://upload.cc/i1/2020/05/28/iWL3RJ.png" class="img-adjust">
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <h1 class="hword-adjust">版型(五)</h1>
+                                            <p class="pword-adjust">
+                                                <br>
+                                                需上傳檔案：影片、跑馬燈、圖片、文字、QRcode圖片<br><br>
+                                                檔案規格：<br>
+                                                影片：請附上youtube影片"ID"，影片時長需在10分鐘內、<br>
+                                                跑馬燈：字數需在50字內、<br>
+                                                圖片：寬度為1085、高度不超過1025、<br>
+                                                文字：字數需在80字內（含標點符號)、<br>
+                                                QRcode：須為正方形之圖片
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'account:post-create' %}?value=5">
+                                    <button type="submit" value="pick_p5" name="pick_p5" class="btn btn-outline-warning">
+                                        選擇版型(五)並前往下一步
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#P6">
+                    <img src="https://upload.cc/i1/2020/06/12/GT1SHF.png" class="img-adjust">
+                </button>
+                <div class="modal fade bd-example-modal-lg" id="P6" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title hword-adjust" id="exampleModalCenterTitle">版型六</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <img src="https://upload.cc/i1/2020/06/12/GT1SHF.png" class="img-adjust">
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <h1 class="hword-adjust">版型六</h1>
+                                            <p class="pword-adjust">
+                                                <br>
+                                                可上傳檔案：影片、跑馬燈、圖片、文字、QRcode圖片<br><br>
+                                                檔案規格：<br>
+                                                影片：請附上youtube影片"ID"，影片時長需在10分鐘內、<br>
+                                                跑馬燈：字數需在50字內、<br>
+                                                圖片：寬度為1085<br>
+                                                文字：字數請斟酌版面大小輸入字數<br>
+                                                QRcode：須為正方形之圖片<br>
+                                                直播：如需直播服務，請至客製化表單中的Field中填寫要求直播服務
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'account:post-create' %}?value=6">
+                                    <button type="submit" value="pick_p6" name="pick_p6" class="btn btn-outline-warning">
+                                        選擇版型(六)並前往下一步
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

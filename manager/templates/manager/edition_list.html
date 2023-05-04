@@ -1,0 +1,33 @@
+{% extends "manager/base.html" %}
+
+{% block content %}
+<div class="form">
+    <h2>版型列表</h2>
+    <table class="table">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">版型</th>
+            <th scope="col">價格</th>
+        </tr>
+        {% for edit in editions %}
+            <tr>
+                <th>{{ edit.id }}</th>
+                <td><a href="{% url 'manager:edit-update' edit.id %}">{{ edit.edit_name }}</a></td>
+                <td>{{ edit.charge }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div id="button" style="margin-left: 40%;">
+        <mu-button color="teal900" href="{% url 'manager:manager-home' %}">
+            <mu-icon value="arrow_back" left></mu-icon>返回
+        </mu-button>
+        <mu-button color="blue300" href="{% url 'manager:edit-create' %}">
+            <mu-icon value="create" left></mu-icon>新增
+        </mu-button>
+    </div>
+</div>
+
+{% endblock content %}
+
+
